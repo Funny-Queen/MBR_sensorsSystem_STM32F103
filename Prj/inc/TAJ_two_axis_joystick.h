@@ -1,7 +1,7 @@
-/** 
+/**
  * @file   	TAJ_two_axis_joystick.h
- * @author 	
- * @version	
+ * @author
+ * @version
  * @date 	18 окт. 2018 г.
  * @brief
  */
@@ -13,9 +13,15 @@
 
 /*#### |Begin| --> Секция - "Include" ########################################*/
 /*==== |Begin| --> Секция - "C libraries" ====================================*/
+#include "stdio.h"
+#include "stdint.h"
 /*==== |End  | <-- Секция - "C libraries" ====================================*/
 
 /*==== |Begin| --> Секция - "MK peripheral libraries" ========================*/
+#include "stm32f1xx.h"
+#include "stm32f1xx_hal.h"
+#include "stm32f1xx_ll_gpio.h"
+#include "stm32f1xx_ll_adc.h"
 /*==== |End  | <-- Секция - "MK peripheral libraries" ========================*/
 
 /*==== |Begin| --> Секция - "Extern libraries" ===============================*/
@@ -36,6 +42,9 @@
 
 
 /*#### |Begin| --> Секция - "Прототипы глобальных функций" ###################*/
+extern void
+TAJ_Init_All(
+	void);
 /*#### |End  | <-- Секция - "Прототипы глобальных функций" ###################*/
 
 
