@@ -60,6 +60,7 @@ TAJ_Init_IO_Ports(
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 
 	LL_GPIO_InitTypeDef GPIO_init_s;
+	LL_GPIO_StructInit(&GPIO_init_s);
 	GPIO_init_s.Mode 		= LL_GPIO_MODE_ANALOG;
 	GPIO_init_s.OutputType 	= LL_GPIO_OUTPUT_PUSHPULL;
 	GPIO_init_s.Pin 		= LL_GPIO_PIN_0 | LL_GPIO_PIN_1;
@@ -87,28 +88,64 @@ void
 TAJ_Init_ADC1(
 	void)
 {
-	LL_ADC_InitTypeDef init_s;
-	LL_ADC_StructInit(&init_s);
-	init_s.DataAlignment		= LL_ADC_DATA_ALIGN_RIGHT;
-	init_s.SequencersScanMode 	= LL_ADC_SEQ_SCAN_DISABLE;
+	__HAL_RCC_ADC1_CLK_ENABLE();
+
+	LL_ADC_InitTypeDef adc_init_s;
+	LL_ADC_StructInit(&adc_init_s);
+	adc_init_s.DataAlignment		= LL_ADC_DATA_ALIGN_RIGHT;
+	adc_init_s.SequencersScanMode 	= LL_ADC_SEQ_SCAN_DISABLE;
 
 	LL_ADC_Init(
-		ADC0,
-		init_s);
+		ADC1,
+		&adc_init_s);
+
+	LL_ADC_REG_InitTypeDef adc_reg_init_s;
+	LL_ADC_REG_StructInit(&adc_reg_init_s);
+	adc_reg_init_s.ContinuousMode 	= LL_ADC_REG_CONV_CONTINUOUS;
+	adc_reg_init_s.DMATransfer 		= LL_ADC_REG_DMA_TRANSFER_NONE;
+	adc_reg_init_s.SequencerDiscont = LL_ADC_REG_SEQ_DISCONT_DISABLE;
+	adc_reg_init_s.SequencerLength 	= LL_ADC_REG_SEQ_SCAN_DISABLE;
+	adc_reg_init_s.TriggerSource 	= LL_ADC_REG_TRIG_SOFTWARE;
+
+	LL_ADC_REG_Init(
+		ADC1,
+		&adc_reg_init_s);
+
+	LL_ADC_Enable(ADC1);
+	LL_ADC_INJ_StartConversionSWStart(ADC1);
+
+
 }
 
 void
 TAJ_Init_ADC2(
 	void)
 {
-	LL_ADC_InitTypeDef init_s;
-	LL_ADC_StructInit(&init_s);
-	init_s.DataAlignment		= LL_ADC_DATA_ALIGN_RIGHT;
-	init_s.SequencersScanMode 	= LL_ADC_SEQ_SCAN_DISABLE;
+	__HAL_RCC_ADC2_CLK_ENABLE();
+
+	LL_ADC_InitTypeDef adc_init_s;
+	LL_ADC_StructInit(&adc_init_s);
+	adc_init_s.DataAlignment		= LL_ADC_DATA_ALIGN_RIGHT;
+	adc_init_s.SequencersScanMode 	= LL_ADC_SEQ_SCAN_DISABLE;
 
 	LL_ADC_Init(
-		ADC1,
-		init_s);
+		ADC2,
+		&adc_init_s);
+
+	LL_ADC_REG_InitTypeDef adc_reg_init_s;
+	LL_ADC_REG_StructInit(&adc_reg_init_s);
+	adc_reg_init_s.ContinuousMode 	= LL_ADC_REG_CONV_CONTINUOUS;
+	adc_reg_init_s.DMATransfer 		= LL_ADC_REG_DMA_TRANSFER_NONE;
+	adc_reg_init_s.SequencerDiscont = LL_ADC_REG_SEQ_DISCONT_DISABLE;
+	adc_reg_init_s.SequencerLength 	= LL_ADC_REG_SEQ_SCAN_DISABLE;
+	adc_reg_init_s.TriggerSource 	= LL_ADC_REG_TRIG_SOFTWARE;
+
+	LL_ADC_REG_Init(
+		ADC2,
+		&adc_reg_init_s);
+
+	LL_ADC_Enable(ADC2);
+	LL_ADC_INJ_StartConversionSWStart(ADC2);
 }
 /*#### |End  | <-- Секция - "Описание локальных функций" #####################*/
 

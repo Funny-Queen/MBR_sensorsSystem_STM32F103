@@ -15,6 +15,7 @@
 /*#### |Begin| --> Секция - "Глобальные переменные" ##########################*/
 const uint32_t progTactLength = 10000u;
 char testMessage_a[] = "Hello World\n";
+uint16_t adc1Val;
 /*#### |End  | <-- Секция - "Глобальные переменные" ##########################*/
 
 
@@ -72,7 +73,7 @@ int main(
 
 //			LL_USART_TransmitData8(USART2, 'H');
 			LL_USART_TransmitData8(USART1, 'Y');
-
+			adc1Val = LL_ADC_REG_ReadConversionData12(ADC1);
 			HPT_status_s.restProgTactCnt = progTactLength - TIM4->CNT;
 			HPT_status_s.minRestTactCnt = HPT_Min(HPT_status_s.restProgTactCnt, TIM4->CNT);
 		}

@@ -29,6 +29,7 @@
 #include "HPT_hard_prog_tact.h"
 #include "VT_virt_tmrs.h"
 #include "CWR_communicate_with_robot.h"
+#include "TAJ_two_axis_joystick.h"
 /*==== |End  | <-- Секция - "Extern libraries" ===============================*/
 /*#### |End  | <-- Секция - "Include" ########################################*/
 
