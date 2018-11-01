@@ -72,18 +72,6 @@ TAJ_Init_IO_Ports(
 		&GPIO_init_s);
 }
 
-//void
-//TAJ_Init_ADC0(void)
-//{
-//	LL_ADC_INJ_InitTypeDef init_s;
-//	LL_ADC_INJ_StructInit(&init_s);
-//	init_s.SequencerDiscont = LL_ADC_INJ_SEQ_DISCONT_DISABLE;
-//	init_s.SequencerLength = LL_ADC_INJ_SEQ_SCAN_DISABLE;
-//	init_s.TrigAuto =
-//	init_s.TriggerSource =
-//
-//}
-
 void
 TAJ_Init_ADC1(
 	void)
@@ -112,7 +100,7 @@ TAJ_Init_ADC1(
 		&adc_reg_init_s);
 
 	LL_ADC_Enable(ADC1);
-	LL_ADC_INJ_StartConversionSWStart(ADC1);
+	LL_ADC_REG_StartConversionSWStart(ADC1);
 
 
 }
@@ -145,7 +133,7 @@ TAJ_Init_ADC2(
 		&adc_reg_init_s);
 
 	LL_ADC_Enable(ADC2);
-	LL_ADC_INJ_StartConversionSWStart(ADC2);
+	LL_ADC_REG_StartConversionSWStart(ADC2);
 }
 /*#### |End  | <-- Секция - "Описание локальных функций" #####################*/
 
